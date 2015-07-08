@@ -17,5 +17,25 @@ describe Hand do
     end
 
   end
+  describe "pair?" do
+    it 'determines when you have a pair' do
+      hand = Hand.new(%w(1h 1h 2s 3s 4d))
+
+      expect(hand.pair?).to be true
+    end
+    it 'does not count a three of a kind is a pair' do
+      hand = Hand.new(%w(1h 1s 1c 2d 3c 6d))
+
+      expect(hand.pair?).to be false
+    end
+    it 'does not count a full house as a pair' do
+      pending
+    end
+    it 'does not count two pair as a pair' do
+      hand = Hand.new(%w(1h 1c 2d 2s 7c))
+
+      expect(hand.pair?).to be false
+    end
+  end
 
 end
